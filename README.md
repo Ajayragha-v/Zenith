@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Zenith — Code Debugging Prototype
 
 > \\\\\\\*\\\\\\\*Cohort prototype submission | Early-stage, multi-stage debugging workflow\\\\\\\*\\\\\\\*
@@ -148,3 +149,7 @@ fixtures/
 
 This README documents the current prototype honestly: shared contracts and a connected pipeline are present, while real diagnosis, semantic repair, and patch verification remain unfinished. No hosted link or demo recording is currently provided.
 
+=======
+# Zenith
+This is the project Zenith, a code refactor who resolves codes bugs and error and helps in remove the bad codes like dead codes, code complexity, code duplicity. This is the tool for the professionals and beginner.  
+>>>>>>> 893635585940d1ac3cd8b9fabc2425eb55d9c8cd
