@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "0.1.0",
+  "project": {
+    "name": "sample-python-app",
+    "rootPath": "./test/fixtures/sample-python",
+    "version": "1.0.0",
+    "description": "Illustrative sample project demonstrating program model contract",
+    "metadata": {
+      "illustrativeSample": true,
+      "generatedBy": "zenith-detective-example"
+    }
+  },
+  "language": "python",
+  "files": [
+    {
+      "path": "test/fixtures/sample-python/main.py",
+      "language": "python",
+      "status": "parsed",
+      "lineCount": 33,
+      "sizeBytes": 797,
+      "encoding": "utf-8",
+      "imports": [],
+      "diagnostics": [],
+      "metadata": {
+        "framework": "standard-library"
+      }
+    }
+  ],
+  "functions": [
+    {
+      "id": "fn-calculate-metrics",
+      "name": "calculate_metrics",
+      "filePath": "test/fixtures/sample-python/main.py",
+      "location": {
+        "filePath": "test/fixtures/sample-python/main.py",
+        "startLine": 7,
+        "startColumn": 0,
+        "endLine": 20,
+        "endColumn": 5
+      },
+      "parameters": [
+        {
+          "name": "values",
+          "typeAnnotation": null,
+          "defaultValue": null,
+          "isVariadic": false
+        }
+      ],
+      "returnType": null,
+      "isAsync": false,
+      "isGenerator": false,
+      "parentClass": null,
+      "docstring": "Compute summary metrics for a given list of numbers.\n\nLine 14 triggers ZeroDivisionError when `values` is empty.",
+      "metadata": {}
+    },
+    {
+      "id": "fn-main",
+      "name": "main",
+      "filePath": "test/fixtures/sample-python/main.py",
+      "location": {
+        "filePath": "test/fixtures/sample-python/main.py",
+        "startLine": 23,
+        "startColumn": 0,
+        "endLine": 28,
+        "endColumn": 29
+      },
+      "parameters": [],
+      "returnType": null,
+      "isAsync": false,
+      "isGenerator": false,
+      "parentClass": null,
+      "docstring": null,
+      "metadata": {}
+    }
+  ],
+  "classes": [],
+  "symbols": [
+    {
+      "id": "sym-calculate-metrics",
+      "name": "calculate_metrics",
+      "kind": "function",
+      "filePath": "test/fixtures/sample-python/main.py",
+      "location": {
+        "filePath": "test/fixtures/sample-python/main.py",
+        "startLine": 7,
+        "startColumn": 4,
+        "endLine": 7,
+        "endColumn": 21
+      },
+      "scope": "module",
+      "declaredType": null,
+      "metadata": {}
+    },
+    {
+      "id": "sym-main",
+      "name": "main",
+      "kind": "function",
+      "filePath": "test/fixtures/sample-python/main.py",
+      "location": {
+        "filePath": "test/fixtures/sample-python/main.py",
+        "startLine": 23,
+        "startColumn": 4,
+        "endLine": 23,
+        "endColumn": 8
+      },
+      "scope": "module",
+      "declaredType": null,
+      "metadata": {}
+    }
+  ],
+  "controlFlow": {
+    "graphs": {
+      "fn-calculate-metrics": {
+        "id": "cfg-calculate-metrics",
+        "functionId": "fn-calculate-metrics",
+        "entryBlockId": "block-entry",
+        "exitBlockIds": ["block-exit"],
+        "blocks": [
+          {
+            "id": "block-entry",
+            "label": "Entry & Aggregation",
+            "filePath": "test/fixtures/sample-python/main.py",
+            "location": {
+              "filePath": "test/fixtures/sample-python/main.py",
+              "startLine": 12,
+              "startColumn": 4,
+              "endLine": 13,
+              "endColumn": 23
+            },
+            "statements": [
+              "total = sum(values)",
+              "count = len(values)"
+            ]
+          },
+          {
+            "id": "block-calc",
+            "label": "Division Calculation",
+            "filePath": "test/fixtures/sample-python/main.py",
+            "location": {
+              "filePath": "test/fixtures/sample-python/main.py",
+              "startLine": 15,
+              "startColumn": 4,
+              "endLine": 15,
+              "endColumn": 27
+            },
+            "statements": [
+              "average = total / count"
+            ]
+          },
+          {
+            "id": "block-exit",
+            "label": "Return Dictionary",
+            "filePath": "test/fixtures/sample-python/main.py",
+            "location": {
+              "filePath": "test/fixtures/sample-python/main.py",
+              "startLine": 16,
+              "startColumn": 4,
+              "endLine": 20,
+              "endColumn": 5
+            },
+            "statements": [
+              "return {\"total\": total, \"count\": count, \"average\": average}"
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "from": "block-entry",
+            "to": "block-calc",
+            "condition": null,
+            "type": "sequential"
+          },
+          {
+            "from": "block-calc",
+            "to": "block-exit",
+            "condition": null,
+            "type": "sequential"
+          }
+        ]
+      }
+    }
+  },
+  "diagnostics": [],
+  "metadata": {
+    "illustrativeOnly": true,
+    "description": "Representative program model constructed for design validation"
+  }
+}

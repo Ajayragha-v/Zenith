@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0",
+  "id": "ev-py-zero-div-001",
+  "source": "python-runtime",
+  "ruleId": "ZeroDivisionError",
+  "category": "runtime_failure",
+  "severity": "error",
+  "message": "ZeroDivisionError: division by zero encountered during average calculation",
+  "location": {
+    "filePath": "test/fixtures/sample-python/main.py",
+    "startLine": 15,
+    "startColumn": 14,
+    "endLine": 15,
+    "endColumn": 27
+  },
+  "relatedLocations": [
+    {
+      "filePath": "test/fixtures/sample-python/main.py",
+      "startLine": 27,
+      "startColumn": 4,
+      "endLine": 27,
+      "endColumn": 39
+    }
+  ],
+  "fingerprint": "sha256:0d5b4a8e2f6c91a03e1b7425d9c12e847fae9381c81ef4",
+  "confidence": 1.0,
+  "metadata": {
+    "illustrativeOnly": true,
+    "capturedStream": "stderr",
+    "stackTrace": [
+      "Traceback (most recent call last):",
+      "  File \"test/fixtures/sample-python/main.py\", line 32, in <module>",
+      "    main()",
+      "  File \"test/fixtures/sample-python/main.py\", line 27, in main",
+      "    result = calculate_metrics(dataset)",
+      "  File \"test/fixtures/sample-python/main.py\", line 15, in calculate_metrics",
+      "    average = total / count",
+      "ZeroDivisionError: division by zero"
+    ]
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "0.1.0",
+  "runId": "run-sample-python-001",
+  "status": "confirmed_failure",
+  "project": {
+    "name": "sample-python-app",
+    "rootPath": "./test/fixtures/sample-python",
+    "version": "1.0.0",
+    "description": "Sample Python project demonstrating root-cause IR format",
+    "metadata": {
+      "illustrativeSample": true
+    }
+  },
+  "language": "python",
+  "summary": "Reproduction confirmed ZeroDivisionError in calculate_metrics caused by unguarded empty input list.",
+  "programModel": null,
+  "evidence": [
+    {
+      "schemaVersion": "0.1.0",
+      "id": "ev-py-zero-div-001",
+      "source": "python-runtime",
+      "ruleId": "ZeroDivisionError",
+      "category": "runtime_failure",
+      "severity": "error",
+      "message": "ZeroDivisionError: division by zero encountered during average calculation",
+      "location": {
+        "filePath": "test/fixtures/sample-python/main.py",
+        "startLine": 15,
+        "startColumn": 14,
+        "endLine": 15,
+        "endColumn": 27
+      },
+      "relatedLocations": [
+        {
+          "filePath": "test/fixtures/sample-python/main.py",
+          "startLine": 27,
+          "startColumn": 4,
+          "endLine": 27,
+          "endColumn": 39
+        }
+      ],
+      "fingerprint": "sha256:0d5b4a8e2f6c91a03e1b7425d9c12e847fae9381c81ef4",
+      "confidence": 1.0,
+      "metadata": {
+        "illustrativeOnly": true
+      }
+    },
+    {
+      "schemaVersion": "0.1.0",
+      "id": "ev-lint-unhandled-div-002",
+      "source": "static-division-analyzer",
+      "ruleId": "POTENTIAL_ZERO_DIVISOR",
+      "category": "lint",
+      "severity": "warning",
+      "message": "Denominator 'count' is derived from len(values) without a preceding non-empty check.",
+      "location": {
+        "filePath": "test/fixtures/sample-python/main.py",
+        "startLine": 15,
+        "startColumn": 4,
+        "endLine": 15,
+        "endColumn": 27
+      },
+      "relatedLocations": [],
+      "fingerprint": "sha256:39a1c8f411b0e25d6a892b13c70e9f4561234abcd5678",
+      "confidence": 0.8,
+      "metadata": {
+        "illustrativeOnly": true
+      }
+    }
+  ],
+  "reproduction": {
+    "status": "reproduced",
+    "command": "python test/fixtures/sample-python/main.py",
+    "exitCode": 1,
+    "stdout": "Processing metrics...\n",
+    "stderr": "Traceback (most recent call last):\n  File \"test/fixtures/sample-python/main.py\", line 32, in <module>\n    main()\n  File \"test/fixtures/sample-python/main.py\", line 27, in main\n    result = calculate_metrics(dataset)\n  File \"test/fixtures/sample-python/main.py\", line 15, in calculate_metrics\n    average = total / count\nZeroDivisionError: division by zero\n",
+    "reproductionSteps": [
+      "Invoke python test/fixtures/sample-python/main.py directly",
+      "Observe unhandled ZeroDivisionError exit code 1"
+    ],
+    "metadata": {
+      "illustrativeOnly": true
+    }
+  },
+  "diagnoses": [
+    {
+      "id": "diag-zero-division-guard",
+      "title": "ZeroDivisionError due to unguarded empty collection in calculate_metrics",
+      "description": "calculate_metrics divides total by count without checking whether count (len(values)) is greater than zero.",
+      "rootCause": "Direct division operation total / count on line 15 without a guard condition when values is empty (count == 0).",
+      "confidence": 0.98,
+      "supportingEvidenceIds": [
+        "ev-py-zero-div-001",
+        "ev-lint-unhandled-div-002"
+      ],
+      "affectedLocations": [
+        {
+          "filePath": "test/fixtures/sample-python/main.py",
+          "startLine": 15,
+          "startColumn": 4,
+          "endLine": 15,
+          "endColumn": 27
+        }
+      ],
+      "alternatives": [
+        "Caller should validate non-empty collection prior to invoking calculate_metrics",
+        "calculate_metrics should return None or 0.0 when values is empty"
+      ],
+      "metadata": {
+        "illustrativeOnly": true
+      }
+    }
+  ],
+  "limitations": [
+    "Dynamic analysis executed without unit test runner",
+    "External library dependencies were not inspected"
+  ],
+  "metadata": {
+    "illustrativeOnly": true,
+    "purpose": "Step 1 contract validation and downstream pipeline interface definition"
+  }
+}

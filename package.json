@@ -1,0 +1,24 @@
+{
+  "name": "zenith-detective",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "diff": "^9.0.0",
+    "jscpd": "^5.4.2",
+    "tree-sitter": "^0.25.1",
+    "tree-sitter-python": "^0.25.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/diff": "^7.0.2",
+    "@types/node": "^20.11.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  }
+}

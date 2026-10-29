@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "1.0.0",
+  "runId": "run-test-001",
+  "snapshot": {
+    "commit": "a1b2c3d",
+    "timestamp": "2026-10-19T10:00:00Z"
+  },
+  "project": {
+    "name": "test-project",
+    "rootPath": "/test"
+  },
+  "language": "python",
+  "files": [
+    {
+      "path": "orders.py",
+      "language": "python",
+      "status": "partially_parsed",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "diagnostics": [
+        {
+          "id": "d-1",
+          "filePath": "orders.py",
+          "message": "expected ':'",
+          "severity": "error",
+          "parser": "ast",
+          "expected": [":"],
+          "actual": "newline",
+          "recovered": true
+        }
+      ]
+    }
+  ],
+  "capabilityGaps": []
+}

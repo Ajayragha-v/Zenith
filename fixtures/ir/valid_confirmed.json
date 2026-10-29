@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "1.0.0",
+  "runId": "run-test-001",
+  "status": "confirmed_failure",
+  "project": { "name": "test-project", "rootPath": "/test" },
+  "language": "python",
+  "summary": "Null dereference found.",
+  "runStartedAt": "2026-10-19T10:00:00Z",
+  "runCompletedAt": "2026-10-19T10:05:00Z",
+  "programModelRef": {
+    "path": "model.json",
+    "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stats": { "fileCount": 1, "nodeCount": 10, "parseFailures": 0 }
+  },
+  "reproduction": {
+    "status": "reproduced",
+    "command": "pytest test.py",
+    "acceptanceCommand": "pytest test.py",
+    "runs": 3,
+    "passCount": 0,
+    "failCount": 3
+  },
+  "evidence": [
+    {
+      "schemaVersion": "1.0.0",
+      "id": "ev-1",
+      "source": "mypy",
+      "category": "type",
+      "severity": "error",
+      "message": "Null deref",
+      "fingerprint": "abc123hash",
+      "confidence": 0.9,
+      "confidenceBasis": "tool_reported"
+    }
+  ],
+  "diagnoses": [
+    {
+      "id": "diag-1",
+      "title": "Fix null",
+      "description": "Fix null",
+      "rootCause": "Fix null",
+      "confidence": 0.9,
+      "topHypothesis": true,
+      "supportingEvidenceIds": ["ev-1"],
+      "rootCauseLocation": {
+        "filePath": "orders.py",
+        "startLine": 1,
+        "startColumn": 0,
+        "endLine": 1,
+        "endColumn": 5,
+        "byteStart": 0,
+        "byteEnd": 5,
+        "fileContentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "enclosingSymbolId": "sym-1"
+      }
+    }
+  ],
+  "capabilityGaps": []
+}
